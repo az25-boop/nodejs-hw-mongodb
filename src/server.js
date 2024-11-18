@@ -1,9 +1,9 @@
 import dotenv from 'dotenv';
 import express from 'express';
-import { env } from './src/utils/env.js';
+import { env } from './utils/env.js';
 import pino from 'pino-http';
 import cors from 'cors';
-import { getAllContacts, getContactById } from './src/services/contacts.js';
+import { getAllContacts, getContactById } from './services/contacts.js';
 
 dotenv.config();
 const PORT = Number(env('PORT', 3000));
