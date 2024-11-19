@@ -1,4 +1,3 @@
-// import { Contacts } from '../services/contacts.js';
 import { ContactsCollection } from '../models/contacts.js';
 
 export const getAllContacts = async () => {
@@ -6,11 +5,31 @@ export const getAllContacts = async () => {
   return contacts;
 };
 
-export const getContactById = async (id) => {
-  try {
-    const contact = await ContactsCollection.findById(id);
-    return contact;
-  } catch (error) {
-    return null;
-  }
+export const getContactById = async (contactId) => {
+  const contact = await ContactsCollection.findById(contactId);
+  return contact;
+};
+
+export const createContact = async (payload) => {
+  const contact = await ContactsCollection.create(payload);
+  return contact;
+};
+
+export const updateContact = async (contactId, payload) => {
+  const updateContact = await ContactsCollection.findOneAndUpdate(
+    { _id: contactId },
+    payload,
+    { new: true },
+  );
+
+  if (!updateContact) return null;
+  return updateContact;
+};
+
+export const deleteContact = async (contactId) => {
+  const contact = await ContactsCollection.findOneAndDelete({
+    _id: contactId,
+  });
+
+  return contact;
 };

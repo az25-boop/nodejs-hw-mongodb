@@ -8,7 +8,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/**/*.js",
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "generate": "node src/scripts/generateContacts.js",
+    "remove": "node src/scripts/removeContacts.js",
+    "remove-last": "node src/scripts/removeLastContact.js",
+    "remove-all": "node src/scripts/removeAllContacts.js",
+    "get-all": "node src/scripts/getAllContacts.js",
+    "get-by-id": "node src/scripts/getContactById.js",
+    "add-contact": "node src/scripts/addContact.js",
+    "update": "node src/scripts/updateContact.js"
   },
   "keywords": [],
   "author": "",
