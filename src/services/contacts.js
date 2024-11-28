@@ -7,11 +7,38 @@ export const getAllContacts = async ({
   perPage = 10,
   sortOrder = SORT_ORDER.ASC,
   sortBy = '_id',
+  filter = {},
 }) => {
   const limit = perPage;
   const skip = (page - 1) * perPage;
 
   const contactsQuery = ContactsCollection.find();
+  if (filter.type) {
+    contactsQuery.where('contactType').equals(filter.type); // Фільтр по 'type'
+  }
+
+  if (filter.isFavourite !== undefined) {
+    contactsQuery.where('isFavourite').equals(filter.isFavourite); // Фільтр по 'isFavourite'
+  }
+  if (filter.gender) {
+    contactsQuery.where('type').equals(filter.isFavourite);
+  }
+  if (filter.gender) {
+    contactsQuery.where('gender').equals(filter.gender);
+  }
+  if (filter.maxAge) {
+    contactsQuery.where('age').lte(filter.maxAge);
+  }
+  if (filter.minAge) {
+    contactsQuery.where('age').gte(filter.minAge);
+  }
+  if (filter.maxAvgMark) {
+    contactsQuery.where('avgMark').lte(filter.maxAvgMark);
+  }
+  if (filter.minAvgMark) {
+    contactsQuery.where('avgMark').gte(filter.minAvgMark);
+  }
+
   const contactsCount = await ContactsCollection.find()
     .merge(contactsQuery)
     .countDocuments();
