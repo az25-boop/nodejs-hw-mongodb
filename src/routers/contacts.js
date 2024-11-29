@@ -1,13 +1,14 @@
+import { Router } from 'express';
 import {
   createContactController,
   deleteContactController,
   getAllContactsController,
   getContactByIdController,
+  upsertContactController,
   patchContactController,
 } from '../controllers/contacts.js';
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 
-import { Router } from 'express';
 import { isValidId } from '../middlewares/isValidId.js';
 import { validateBody } from '../middlewares/validateBody.js';
 
@@ -28,6 +29,13 @@ router.post(
   '/contacts',
   validateBody(createContactsSchema),
   ctrlWrapper(createContactController),
+);
+
+router.put(
+  '/:contactId',
+  isValidId,
+  validateBody(createContactsSchema),
+  ctrlWrapper(upsertContactController),
 );
 router.patch(
   '/contacts/:contactId',
