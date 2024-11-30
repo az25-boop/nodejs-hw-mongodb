@@ -3,7 +3,7 @@ import { model, Schema } from 'mongoose';
 
 const usersSchema = new Schema(
   {
-    userId: { type: String, required: true },
+    userId: { type: Schema.Types.ObjectId, required: true },
     accessToken: { type: String, required: true },
     refreshToken: { type: String, required: true },
     accessTokenValidUntil: { type: Date, required: true },
@@ -12,4 +12,4 @@ const usersSchema = new Schema(
   { timestamps: true, versionKey: false },
 );
 
-export const UsersCollection = model('users', usersSchema);
+export const UsersCollection = model('sessions', usersSchema);
