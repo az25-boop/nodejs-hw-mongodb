@@ -1,7 +1,7 @@
 // src/db/models/user.js
 import { model, Schema } from 'mongoose';
 
-const usersSchema = new Schema(
+const sessionSchema = new Schema(
   {
     userId: { type: Schema.Types.ObjectId, required: true },
     accessToken: { type: String, required: true },
@@ -12,4 +12,4 @@ const usersSchema = new Schema(
   { timestamps: true, versionKey: false },
 );
 
-export const UsersCollection = model('sessions', usersSchema);
+export const SessionCollection = model('sessions', sessionSchema);

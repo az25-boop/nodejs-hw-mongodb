@@ -2,7 +2,7 @@
 
 import createHttpError from 'http-errors';
 
-import { ContactsCollection } from '../models/contacts.js';
+import { ContactsCollection } from '../models/contact.js';
 import { ROLES } from '../constants/index.js';
 
 export const checkRoles =
@@ -21,18 +21,18 @@ export const checkRoles =
     }
 
     if (roles.includes(ROLES.PARENT) && role === ROLES.PARENT) {
-      const { studentId } = req.params;
-      if (!studentId) {
+      const { contactId } = req.params;
+      if (!contactId) {
         next(createHttpError(403));
         return;
       }
 
-      const student = await ContactsCollection.findOne({
-        _id: studentId,
+      const contact = await ContactsCollection.findOne({
+        _id: contactId,
         parentId: user._id,
       });
 
-      if (student) {
+      if (contact) {
         next();
         return;
       }

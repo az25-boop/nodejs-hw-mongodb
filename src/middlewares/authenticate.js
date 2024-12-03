@@ -1,6 +1,6 @@
 // src/middlewares/authenticate.js
 import createHttpError from 'http-errors';
-import { SessionsCollection } from '../models/session.js';
+import { SessionCollection } from '../models/session.js';
 import { UsersCollection } from '../models/user.js';
 
 export const authenticate = async (req, res, next) => {
@@ -19,7 +19,9 @@ export const authenticate = async (req, res, next) => {
     return;
   }
 
-  const session = await SessionsCollection.findOne({ accessToken: token });
+  const session = await SessionCollection.findOne({
+    accessToken: token,
+  });
 
   if (!session) {
     next(createHttpError(401, 'Session not found'));
