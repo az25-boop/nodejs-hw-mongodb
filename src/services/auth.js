@@ -1,14 +1,18 @@
-// src/services/auth.js
-
 import createHttpError from 'http-errors';
-import { UsersCollection } from '../db/models/user.js';
-import { randomBytes } from 'crypto';
 import bcrypt from 'bcrypt';
-import { FIFTEEN_MINUTES, ONE_DAY } from '../constants/index.js';
-import { SessionsCollection } from '../db/models/session.js';
+import { UsersCollection } from '../models/user.js';
+import { randomBytes } from 'crypto';
+import { FIFTEEN_MINUTES, THIRTY_DAY } from '../constants/index.js';
+import { SessionCollection } from '../models/session.js';
 
 export const registerUser = async (payload) => {
-  return await UsersCollection.create(payload);
+  const user = await UsersCollection.findOne({ email: payload.email });
+  if (user) throw createHttpError(409, 'Email in use');
+  const encryptedPassword = await bcrypt.hash(payload.password, 10);
+  return await UsersCollection.create({
+    ...payload,
+    password: encryptedPassword,
+  });
 };
 
 export const loginUser = async (payload) => {
@@ -22,22 +26,18 @@ export const loginUser = async (payload) => {
     throw createHttpError(401, 'Unauthorized');
   }
 
-  await SessionsCollection.deleteOne({ userId: user._id });
+  await SessionCollection.deleteOne({ userId: user._id });
 
   const accessToken = randomBytes(30).toString('base64');
   const refreshToken = randomBytes(30).toString('base64');
 
-  return await SessionsCollection.create({
+  return await SessionCollection.create({
     userId: user._id,
     accessToken,
     refreshToken,
     accessTokenValidUntil: new Date(Date.now() + FIFTEEN_MINUTES),
-    refreshTokenValidUntil: new Date(Date.now() + ONE_DAY),
+    refreshTokenValidUntil: new Date(Date.now() + THIRTY_DAY),
   });
-};
-
-export const logoutUser = async (sessionId) => {
-  await SessionsCollection.deleteOne({ _id: sessionId });
 };
 
 const createSession = () => {
@@ -48,12 +48,12 @@ const createSession = () => {
     accessToken,
     refreshToken,
     accessTokenValidUntil: new Date(Date.now() + FIFTEEN_MINUTES),
-    refreshTokenValidUntil: new Date(Date.now() + ONE_DAY),
+    refreshTokenValidUntil: new Date(Date.now() + THIRTY_DAY),
   };
 };
 
 export const refreshUsersSession = async ({ sessionId, refreshToken }) => {
-  const session = await SessionsCollection.findOne({
+  const session = await SessionCollection.findOne({
     _id: sessionId,
     refreshToken,
   });
@@ -71,10 +71,14 @@ export const refreshUsersSession = async ({ sessionId, refreshToken }) => {
 
   const newSession = createSession();
 
-  await SessionsCollection.deleteOne({ _id: sessionId, refreshToken });
+  await SessionCollection.deleteOne({ _id: sessionId, refreshToken });
 
-  return await SessionsCollection.create({
+  return await SessionCollection.create({
     userId: session.userId,
     ...newSession,
   });
+};
+
+export const logoutUser = async (sessionId) => {
+  await SessionCollection.deleteOne({ _id: sessionId });
 };

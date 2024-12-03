@@ -4,7 +4,7 @@ import {
   deleteContactController,
   getAllContactsController,
   getContactByIdController,
-  upsertContactController,
+  // upsertContactController,
   patchContactController,
 } from '../controllers/contacts.js';
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
@@ -48,13 +48,13 @@ router.patch(
   ctrlWrapper(patchContactController),
 );
 
-router.put(
-  '/:contactId',
-  isValidId,
-  checkRoles(ROLES.TEACHER),
-  validateBody(createContactsSchema),
-  ctrlWrapper(upsertContactController),
-);
+// router.put(
+//   '/:contactId',
+//   isValidId,
+//   checkRoles(ROLES.TEACHER),
+//   validateBody(createContactsSchema),
+//   ctrlWrapper(upsertContactController),
+// );
 
 router.delete(
   '/contacts/:contactId',
