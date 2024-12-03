@@ -1,11 +1,31 @@
-import { mongoose } from 'mongoose';
+import { model, mongoose } from 'mongoose';
 
-const contactSchema = new mongoose.Schema(
+const contactSchema = new Schema(
   {
     name: {
       type: String,
       required: true,
     },
+    age: {
+      type: Number,
+      required: true,
+    },
+    gender: {
+      type: String,
+      required: true,
+      enum: ['male', 'female', 'other'],
+    },
+    avgMark: {
+      type: Number,
+      required: true,
+    },
+    onDuty: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    parentId: { type: Schema.Types.ObjectId, ref: 'users' }, // нова властивість
+
     phoneNumber: {
       type: String,
       required: true,
@@ -22,6 +42,11 @@ const contactSchema = new mongoose.Schema(
       enum: ['work', 'home', 'personal'],
       default: 'personal',
     },
+    userId: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: 'users',
+    },
   },
   {
     timestamps: true,
@@ -29,4 +54,4 @@ const contactSchema = new mongoose.Schema(
   },
 );
 
-export const ContactsCollection = mongoose.model('contacts', contactSchema);
+export const ContactsCollection = model('contacts', contactSchema);
