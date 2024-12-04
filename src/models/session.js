@@ -8,7 +8,10 @@ const sessionSchema = new mongoose.Schema(
     accessTokenValidUntil: { type: Date, required: true },
     refreshTokenValidUntil: { type: Date, required: true },
   },
-  { versionKey: false },
+  {
+    timestamps: true,
+    versionKey: false,
+  },
 );
 
 const SessionCollection = mongoose.model('sessions', sessionSchema);
