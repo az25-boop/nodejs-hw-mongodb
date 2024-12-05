@@ -1,6 +1,5 @@
 // src/db/models/user.js
 import { model, Schema } from 'mongoose';
-import { ROLES } from '../constants/index.js';
 
 const userSchema = new Schema(
   {
@@ -24,11 +23,6 @@ const userSchema = new Schema(
     updatedAt: {
       type: Date,
       default: Date.now,
-    },
-    role: {
-      type: String,
-      enum: [ROLES.TEACHER, ROLES.PARENT],
-      default: ROLES.PARENT,
     },
   },
   { timestamps: true, versionKey: false },
