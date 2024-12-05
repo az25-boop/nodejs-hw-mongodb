@@ -6,26 +6,6 @@ const contactSchema = new Schema(
       type: String,
       required: true,
     },
-    // age: {
-    //   type: Number,
-    //   required: true,
-    // },
-    // gender: {
-    //   type: String,
-    //   required: true,
-    //   enum: ['male', 'female', 'other'],
-    // },
-    // avgMark: {
-    //   type: Number,
-    //   required: true,
-    // },
-    // onDuty: {
-    //   type: Boolean,
-    //   required: true,
-    //   default: false,
-    // },
-    // parentId: { type: Schema.Types.ObjectId, ref: 'users' }, // нова властивість
-
     phoneNumber: {
       type: String,
       required: true,
