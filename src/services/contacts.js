@@ -13,7 +13,7 @@ export const getAllContacts = async ({
   const limit = perPage;
   const skip = (page - 1) * perPage;
 
-  const contactsQuery = ContactsCollection.find(userId);
+  const contactsQuery = ContactsCollection.find({ userId });
   if (filter.type) {
     contactsQuery.where('contactType').equals(filter.type); // Фільтр по 'type'
   }
@@ -40,7 +40,7 @@ export const getAllContacts = async ({
     contactsQuery.where('avgMark').gte(filter.minAvgMark);
   }
 
-  const contactsCount = await ContactsCollection.find(userId)
+  const contactsCount = await ContactsCollection.find({ userId })
     .merge(contactsQuery)
     .countDocuments();
 
