@@ -3,7 +3,12 @@ import bcrypt from 'bcrypt';
 import { UsersCollection } from '../models/user.js';
 import { randomBytes } from 'crypto';
 
-import { FIFTEEN_MINUTES, THIRTY_DAY } from '../constants/index.js';
+import {
+  FIFTEEN_MINUTES,
+  THIRTY_DAY,
+  SMTP,
+  TEMPLATES_DIR,
+} from '../constants/index.js';
 import { SessionCollection } from '../models/session.js';
 
 import jwt from 'jsonwebtoken';
