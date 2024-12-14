@@ -63,13 +63,16 @@ export const createContactController = async (req, res, next) => {
   let photoUrl;
 
   if (photo) {
-    try {
-      photoUrl = await saveFileToCloudinary(photo);
-      console.log(photoUrl);
-    } catch (error) {
-      console.log(error);
-      return next(createHttpError(500, 'Failed to upload photo to Cloudinary'));
-    }
+    if (env('ENABLE_CLOUDINARY') === 'true')
+      try {
+        photoUrl = await saveFileToCloudinary(photo);
+        console.log(photoUrl);
+      } catch (error) {
+        console.log(error);
+        return next(
+          createHttpError(500, 'Failed to upload photo to Cloudinary'),
+        );
+      }
   }
 
   const payload = {
