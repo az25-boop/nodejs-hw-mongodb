@@ -64,8 +64,7 @@ export const createContactController = async (req, res, next) => {
 
   if (photo) {
     try {
-      if (process.env('ENABLE_CLOUDINARY') === 'true')
-        photoUrl = await saveFileToCloudinary(photo);
+      photoUrl = await saveFileToCloudinary(photo);
       console.log(photoUrl);
     } catch (error) {
       console.log(error);
@@ -96,13 +95,14 @@ export const patchContactController = async (req, res, next) => {
     let photoUrl;
 
     if (photo) {
-      try {
-        photoUrl = await saveFileToCloudinary(photo);
-      } catch {
-        return next(
-          createHttpError(500, 'Failed to upload photo to Cloudinary'),
-        );
-      }
+      if (process.env('ENABLE_CLOUDINARY') === 'true')
+        try {
+          photoUrl = await saveFileToCloudinary(photo);
+        } catch {
+          return next(
+            createHttpError(500, 'Failed to upload photo to Cloudinary'),
+          );
+        }
     }
 
     const result = await updateContact(contactId, userId, {
