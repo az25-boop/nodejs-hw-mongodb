@@ -1,4 +1,5 @@
 import { model, Schema } from 'mongoose';
+// import { createContact } from '../services/contacts.js';
 
 const contactSchema = new Schema(
   {
@@ -38,3 +39,4 @@ const contactSchema = new Schema(
 );
 
 export const ContactsCollection = model('contacts', contactSchema);
+// export const result = await createContact({ ...contact, photo: photoUrl });
