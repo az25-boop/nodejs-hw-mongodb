@@ -10,7 +10,7 @@ import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 import { parseSortParams } from '../utils/parseSortParams.js';
 import { parseFilterParams } from '../utils/parseFilterParams.js';
 import { saveFileToCloudinary } from '../utils/saveFileToCloudinary.js';
-// import { saveFileToUploadDir } from '..util/saveFileToUploadDir.js';
+import { saveFileToUploadDir } from '../utils/saveFileToUploadDir.js';
 // import { env } from '../env.js';
 
 export const getAllContactsController = async (req, res, next) => {
@@ -89,7 +89,7 @@ export const createContactController = async (req, res) => {
   });
 };
 
-export const patchContactController = async (req, res, next) => {
+export const patchContactController = async (req, res) => {
   const { contactId } = req.params;
   const photo = req.file;
   const userId = req.user._id;
