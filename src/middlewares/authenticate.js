@@ -1,48 +1,38 @@
-// src/middlewares/authenticate.js
-import createHttpError from 'http-errors';
-import { SessionCollection } from '../models/session.js';
-import { UsersCollection } from '../models/user.js';
+import createHttpError from "http-errors";
 
-export const authenticate = async (req, res, next) => {
-  const authHeader = req.get('Authorization');
+import * as authServices from "../services/auth.js";
 
-  if (!authHeader) {
-    next(createHttpError(401, 'Please provide Authorization header'));
-    return;
-  }
+const authenticate = async (req, res, next) => {
+	// const {authorization} = req.headers;
+	const authorization = req.get("Authorization");
 
-  const bearer = authHeader.split(' ')[0];
-  const token = authHeader.split(' ')[1];
+	if (!authorization) {
+		return next(createHttpError(401, "Authorization header not found"));
+	}
 
-  if (bearer !== 'Bearer' || !token) {
-    next(createHttpError(401, 'Auth header should be of type Bearer'));
-    return;
-  }
+	const [bearer, token] = authorization.split(" ");
 
-  const session = await SessionCollection.findOne({
-    accessToken: token,
-  });
+	if (bearer !== "Bearer") {
+		return next(createHttpError(401, "Authorization header must have Bearer type"));
+	}
 
-  if (!session) {
-    next(createHttpError(401, 'Session not found'));
-    return;
-  }
+	const session = await authServices.findSessionByAccessToken(token);
+	if (!session) {
+		return next(createHttpError(401, "Session not found"));
+	}
 
-  const isAccessTokenExpired =
-    new Date() > new Date(session.accessTokenValidUntil);
+	if (new Date() > session.accessTokenValidUntil) {
+		return next(createHttpError(401, "Access token expired"));
+	}
 
-  if (isAccessTokenExpired) {
-    next(createHttpError(401, 'Access token expired'));
-  }
+	const user = await authServices.findUser({ _id: session.userId });
+	if (!user) {
+		return next(createHttpError(401, "User not found"));
+	}
 
-  const user = await UsersCollection.findById(session.userId);
+	req.user = user;
 
-  if (!user) {
-    next(createHttpError(401));
-    return;
-  }
-
-  req.user = user;
-
-  next();
+	next();
 };
+
+export default authenticate;
