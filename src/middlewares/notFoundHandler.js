@@ -1,7 +1,7 @@
-const notFoundHandler = (req, res) => {
-	res.status(404).json({
-		message: `${req.url} not found`
-	})
-};
+/* eslint-disable no-unused-vars */
 
-export default notFoundHandler;
+export const notFoundHandler = (req, res, next) => {
+  res.status(404).json({
+    message: 'Route not found',
+  });
+};
