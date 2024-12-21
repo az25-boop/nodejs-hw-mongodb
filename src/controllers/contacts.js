@@ -117,7 +117,7 @@ export const patchContactController = async (req, res) => {
     message: 'Successfully patched a contact!',
     data: result.contact,
   });
-  console.log(result);
+  // console.log(result);
 };
 
 export const deleteContactController = async (req, res, next) => {
