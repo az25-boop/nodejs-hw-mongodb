@@ -1,18 +1,23 @@
-import Joi from "joi";
-import { contactTypeList } from '../constants/contacts.js';
+// src/validation/students.js
 
-export const contactAddSchema = Joi.object({
-	name: Joi.string().required().min(3).max(20),
-	phoneNumber: Joi.string().required().min(3).max(20),
-	email: Joi.string().min(3).max(20),
-	isFavourite: Joi.boolean(),
-	contactType: Joi.string().required().valid(...contactTypeList).default('personal').min(3).max(20)
+import Joi from 'joi';
+
+export const createContactsSchema = Joi.object({
+  name: Joi.string().min(3).max(20).required(),
+  phoneNumber: Joi.number().required(),
+  email: Joi.string().email().min(3).max(20),
+  isFavourite: Joi.boolean(),
+  contactType: Joi.string()
+    .min(3)
+    .max(20)
+    .valid('work', 'home', 'personal')
+    .required(),
 });
 
-export const contactPatchSchema = Joi.object({
-	name: Joi.string().min(3).max(20),
-	phoneNumber: Joi.string().min(3).max(20),
-	email: Joi.string().min(3).max(20),
-	isFavourite: Joi.boolean(),
-	contactType: Joi.string().valid(...contactTypeList).default('personal').min(3).max(20)
+export const updateContactsSchema = Joi.object({
+  name: Joi.string().min(3).max(20),
+  phoneNumber: Joi.number(),
+  email: Joi.string().email().min(3).max(20),
+  isFavourite: Joi.boolean(),
+  contactType: Joi.string().min(3).max(20).valid('work', 'home', 'personal'),
 });
