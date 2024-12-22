@@ -10,7 +10,7 @@ tags: `Contacts App`
   #! теги, що ви будете використовувати
 servers:
   - url: http://localhost:3000
-  - url: #!посилання на задеплоєний сайт
+  - url: https://nodejs-hw-mongodb-hw7-swagger-uwgp.onrender.com
 paths:
   /contacts/{contactId}:
     get:
