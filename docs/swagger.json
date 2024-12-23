@@ -257,7 +257,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "78ca67e7ae7f10c88b598384"
+              "example": "6768001e9fca786af567199a"
             }
           }
         ],
@@ -315,7 +315,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "78ca67e7ae7f10c88b598384"
+              "example": "6768001e9fca786af567199a"
             }
           }
         ],
