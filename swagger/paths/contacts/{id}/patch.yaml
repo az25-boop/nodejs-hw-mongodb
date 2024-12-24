@@ -44,7 +44,7 @@ requestBody:
             format: binary
             default: null
 responses:
-  '201':
+  '200':
     description: Update a contact
     content:
       application/json:
