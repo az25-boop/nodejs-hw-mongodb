@@ -44,7 +44,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "65ca67e7ae7f10c88b598384"
+              "example": "676443ca2bdd47207b441b5c"
             }
           }
         ],
@@ -67,7 +67,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Successfully found contact with id 65ca67e7ae7f10c88b598384!"
+                      "example": "Successfully found contact with id 676443ca2bdd47207b441b5c!"
                     },
                     "data": {
                       "type": "object",
@@ -105,7 +105,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "65ca67e7ae7f10c88b598384"
+              "example": "676443ca2bdd47207b441b5c"
             }
           }
         ],
@@ -140,7 +140,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "65ca67e7ae7f10c88b598384"
+              "example": "676443ca2bdd47207b441b5c"
             }
           }
         ],
@@ -256,17 +256,17 @@
                   "name": {
                     "description": "Contact's name",
                     "type": "string",
-                    "example": "Sasha Semenets"
+                    "example": "Tateryna Sovalenko"
                   },
                   "phoneNumber": {
                     "description": "Contact's number",
                     "type": "string",
-                    "example": 380971231212
+                    "example": 388800000001
                   },
                   "email": {
                     "description": "Contact's email",
                     "type": "string",
-                    "example": "sasha@example.com"
+                    "example": "31ivan5@example.com"
                   },
                   "isFavorite": {
                     "description": "Is this your favorite contact?",
@@ -510,7 +510,7 @@
           "_id": {
             "description": "Contacts id",
             "type": "string",
-            "example": "65e4decdd286b30065d54af9"
+            "example": "676443ca2bdd47207b441b5c"
           },
           "name": {
             "description": "Contact's name",
@@ -544,7 +544,7 @@
           "userId": {
             "description": "User's id",
             "type": "string",
-            "example": "65e4decdd286b30065d54af9"
+            "example": "676443ca2bdd47207b441b5c"
           },
           "photo": {
             "description": "Link to contact's photo",
