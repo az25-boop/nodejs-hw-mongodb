@@ -8,4 +8,4 @@ content:
       properties:
         message:
           type: string
-          example: Route or contact not found
+          example: Contact not found

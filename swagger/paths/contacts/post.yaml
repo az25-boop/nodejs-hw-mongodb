@@ -19,15 +19,15 @@ requestBody:
           name:
             description: "Contact's name"
             type: string
-            example: 'Katya Pavlenko'
+            example: 'Sasha Semenets'
           phoneNumber:
             description: "Contact's number"
             type: string
-            example: +380000000000
+            example: 380971231212
           email:
             description: "Contact's email"
             type: string
-            example: katya@example.com
+            example: sasha@example.com
           isFavorite:
             description: 'Is this your favorite contact?'
             type: boolean
@@ -64,7 +64,7 @@ responses:
               $ref: '../../components/schemas/contact.yaml'
   '401':
     $ref: '../../components/responses/401.yaml'
-  '404':
-    $ref: '../../components/responses/404.yaml'
-  '409':
-    $ref: '../../components/responses/409.yaml'
+  # '404':
+  #   $ref: '../../components/responses/404.yaml'
+  # '409':
+  #   $ref: '../../components/responses/409.yaml'
