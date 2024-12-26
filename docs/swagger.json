@@ -509,9 +509,9 @@
         ],
         "properties": {
           "_id": {
-            "description": "Contact's ID",
+            "description": "Contact's id",
             "type": "string",
-            "example": "676443ca2bdd47207b441b5c"
+            "example": "676550095db2e33ea012565d"
           },
           "name": {
             "description": "Contact's name",
@@ -520,13 +520,12 @@
           },
           "phoneNumber": {
             "description": "Contact's phone number",
-            "type": "string",
-            "example": "+123113355"
+            "type": "number",
+            "example": 380960000000
           },
           "email": {
             "description": "Contact's email address",
             "type": "string",
-            "format": "email",
             "example": "john.doe@example.com"
           },
           "isFavourite": {
@@ -541,19 +540,18 @@
               "work",
               "home",
               "personal"
-            ],
-            "example": "personal"
-          },
-          "userId": {
-            "description": "User's ID associated with this contact",
-            "type": "string",
-            "example": "676443ca2bdd47207b441b5c"
+            ]
           },
           "photo": {
             "description": "URL of the contact's photo",
             "type": "string",
             "format": "uri",
             "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
+          },
+          "userId": {
+            "description": "User's ID associated with this contact",
+            "type": "string",
+            "example": "67654feb5db2e33ea0125651"
           }
         }
       }
