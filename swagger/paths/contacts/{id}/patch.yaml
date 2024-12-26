@@ -6,13 +6,15 @@ description: 'Update a contact with payload by id'
 security:
   - bearerAuth: []
 parameters:
-  - in: path
-    name: id
+  - name: contactId
+    in: path
     required: true
+    description: ID of the contact to update
     schema:
       type: string
-      example: '676443ca2bdd47207b441b5c'
 requestBody:
+  description: Fields to update in the contact
+  required: true
   content:
     multipart/form-data:
       schema:
