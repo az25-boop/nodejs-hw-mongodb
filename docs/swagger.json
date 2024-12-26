@@ -43,8 +43,7 @@
             "name": "contactId",
             "required": true,
             "schema": {
-              "type": "string",
-              "example": "676443ca2bdd47207b441b5c"
+              "type": "string"
             }
           }
         ],
