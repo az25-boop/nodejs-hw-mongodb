@@ -4,7 +4,7 @@ required:
   - name
   - phoneNumber
   - contactType
-  - userId
+  # - userId
 properties:
   _id:
     description: "Contact's id"
@@ -33,7 +33,6 @@ properties:
   photo:
     description: "URL of the contact's photo"
     type: string
-    format: uri
     example: 'https://res.cloudinary.com/uqwgdu/image/upload/image.png'
   userId:
     description: "User's ID associated with this contact"
