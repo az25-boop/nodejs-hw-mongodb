@@ -594,20 +594,7 @@
         }
       },
       "404": {
-        "description": "Not found error",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "required": [
-                "message"
-              ],
-              "properties": {
-                "message": {
-                  "type": "string",
-                  "example": "Contact not found"
-                }
-              }
+        "description": "Contact not found"
             }
           }
         }
