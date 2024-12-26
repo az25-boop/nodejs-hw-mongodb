@@ -4,9 +4,10 @@ required:
   - name
   - phoneNumber
   - contactType
+  - userId
 properties:
   _id:
-    description: 'Contacts id'
+    description: "Contact's ID"
     type: string
     example: 676443ca2bdd47207b441b5c
   name:
@@ -15,27 +16,28 @@ properties:
     example: 'John Doe'
   phoneNumber:
     description: "Contact's phone number"
-    type: number
-    example: 123113355
-  email:
-    description: "Contact's email"
     type: string
+    example: '+123113355'
+  email:
+    description: "Contact's email address"
+    type: string
+    format: email
+    example: 'john.doe@example.com'
   isFavourite:
-    description: "Contact's status"
+    description: 'Indicates if the contact is a favourite'
     type: boolean
     example: true
   contactType:
-    description: 'Contact type'
+    description: 'Type of contact'
     type: string
-    enum: ['work', 'fhome', 'personal']
-    example: personal
+    enum: ['work', 'home', 'personal']
+    example: 'personal'
   userId:
-    description: "User's id"
+    description: "User's ID associated with this contact"
     type: string
     example: 676443ca2bdd47207b441b5c
   photo:
-    description: "Link to contact's photo"
+    description: "URL of the contact's photo"
     type: string
-    format: binary
-    example: https://res.cloudinary.com/uqwgdu/image/upload/image.png
-    default: null
+    format: uri
+    example: 'https://res.cloudinary.com/uqwgdu/image/upload/image.png'

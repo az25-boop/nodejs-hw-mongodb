@@ -104,7 +104,7 @@
         "tags": ["Contacts"],
         "summary": "List contacts",
         "operationId": "listContacts",
-        "description": "Retrieve a paginated list of contacts with optional filters.",
+        "description": "Retrieve a paginated list of contacts with optional filters and sorting.",
         "security": [
           {
             "bearerAuth": []
@@ -129,6 +129,26 @@
             },
             "description": "Filter by contact type.",
             "example": "work"
+          },
+          {
+            "in": "query",
+            "name": "sortBy",
+            "schema": {
+              "type": "string",
+              "enum": ["name", "createdAt", "updatedAt"]
+            },
+            "description": "Sort contacts by a specific field.",
+            "example": "name"
+          },
+          {
+            "in": "query",
+            "name": "sortOrder",
+            "schema": {
+              "type": "string",
+              "enum": ["asc", "desc"]
+            },
+            "description": "Sort order: ascending (asc) or descending (desc).",
+            "example": "asc"
           },
           {
             "in": "query",
@@ -162,9 +182,6 @@
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
           }
         }
       }
