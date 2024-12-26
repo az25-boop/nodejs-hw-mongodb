@@ -9,7 +9,7 @@ properties:
   _id:
     description: "Contact's id"
     type: string
-    example: 676443ca2bdd47207b441b5c
+    example: 676550095db2e33ea012565d
   name:
     description: "Contact's name"
     type: string
@@ -38,4 +38,4 @@ properties:
   userId:
     description: "User's ID associated with this contact"
     type: string
-    example: 676443ca2bdd47207b441b5c
+    example: 67654feb5db2e33ea0125651
