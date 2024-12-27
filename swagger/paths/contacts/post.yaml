@@ -19,15 +19,15 @@ requestBody:
           name:
             description: "Contact's name"
             type: string
-            example: 'Tateryna Sovalenko'
+            # example: 'Tateryna Sovalenko'
           phoneNumber:
             description: "Contact's number"
             type: string
-            example: +388800000001
+            # example: +388800000001
           email:
             description: "Contact's email"
             type: string
-            example: 31ivan5@example.com
+            # example: 31ivan5@example.com
           isFavorite:
             description: 'Is this your favorite contact?'
             type: boolean
@@ -40,7 +40,7 @@ requestBody:
             description: "Link to contact's photo"
             type: string
             format: binary
-            default: null
+            # default: null
 responses:
   '201':
     description: Creates a contact
