@@ -256,18 +256,15 @@
                 "properties": {
                   "name": {
                     "description": "Contact's name",
-                    "type": "string",
-                    "example": "Tateryna Sovalenko"
+                    "type": "string"
                   },
                   "phoneNumber": {
                     "description": "Contact's number",
-                    "type": "string",
-                    "example": 388800000001
+                    "type": "string"
                   },
                   "email": {
                     "description": "Contact's email",
-                    "type": "string",
-                    "example": "31ivan5@example.com"
+                    "type": "string"
                   },
                   "isFavorite": {
                     "description": "Is this your favorite contact?",
@@ -286,8 +283,7 @@
                   "photo": {
                     "description": "Link to contact's photo",
                     "type": "string",
-                    "format": "binary",
-                    "default": null
+                    "format": "binary"
                   }
                 }
               }
@@ -483,9 +479,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -505,7 +498,8 @@
           "_id",
           "name",
           "phoneNumber",
-          "contactType"
+          "contactType",
+          "userId"
         ],
         "properties": {
           "_id": {
