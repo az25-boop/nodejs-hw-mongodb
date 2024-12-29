@@ -28,11 +28,11 @@ const parseNumber = (number) => {
 };
 
 export const parseFilterParams = (query) => {
-  const { type, isFavourite, gender, maxAge, minAge, maxAvgMark, minAvgMark } =
+  const { type, isFavorite, gender, maxAge, minAge, maxAvgMark, minAvgMark } =
     query;
 
   const parsedType = typeof type === 'string' ? type : undefined;
-  const parsedIsFavourite = parseFavourite(isFavourite);
+  const parsedisFavorite = parseFavourite(isFavorite);
   const parsedGender = parseGender(gender);
   const parsedMaxAge = parseNumber(maxAge);
   const parsedMinAge = parseNumber(minAge);
@@ -41,7 +41,7 @@ export const parseFilterParams = (query) => {
 
   return {
     type: parsedType,
-    isFavourite: parsedIsFavourite,
+    isFavorite: parsedisFavorite,
     gender: parsedGender,
     maxAge: parsedMaxAge,
     minAge: parsedMinAge,

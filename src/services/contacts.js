@@ -18,11 +18,11 @@ export const getAllContacts = async ({
     contactsQuery.where('contactType').equals(filter.type); // Фільтр по 'type'
   }
 
-  if (filter.isFavourite !== undefined) {
-    contactsQuery.where('isFavourite').equals(filter.isFavourite); // Фільтр по 'isFavourite'
+  if (filter.isFavorite !== undefined) {
+    contactsQuery.where('isFavorite').equals(filter.isFavorite); // Фільтр по 'isFavorite'
   }
   if (filter.gender) {
-    contactsQuery.where('type').equals(filter.isFavourite);
+    contactsQuery.where('type').equals(filter.isFavorite);
   }
   if (filter.gender) {
     contactsQuery.where('gender').equals(filter.gender);

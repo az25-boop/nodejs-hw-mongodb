@@ -7,7 +7,7 @@ security:
   - bearerAuth: []
 parameters:
   - in: query
-    name: isFavourite
+    name: isFavorite
     schema:
       type: boolean
     description: Filter by whether the contact is marked as favourite.
@@ -35,7 +35,7 @@ parameters:
     name: sortBy
     schema:
       type: string
-      enum: [name, email, isFavourite]
+      enum: [name, email, isFavorite]
     description: Field by which to sort the contacts.
     example: 'name'
   - in: query
